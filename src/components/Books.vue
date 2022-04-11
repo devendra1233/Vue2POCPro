@@ -1,7 +1,7 @@
 <template>
   <!-- https://vuejs.org/v2/cookbook/using-axios-to-consume-apis.html -->
   <div class="container">
-    <br>
+    <br />
     <h3 class="text-color">Book List:</h3>
     <table class="table">
       <thead>
@@ -34,17 +34,16 @@
 export default {
   name: "Books",
   data() {
-    return {
-    };
+    return {};
   },
-   computed: {
-     historyBooks() {
-    return this.$store.getters.historyBooks[0]
-    }
+  computed: {
+    historyBooks() {
+      return this.$store.getters.historyBooks[0];
+    },
   },
   mounted() {
     this.$store.dispatch("getHistoryBook");
-  }
+  },
 };
 </script>
 
@@ -57,7 +56,7 @@ td {
   padding: 15px;
 }
 
-.text-color{
+.text-color {
   color: black;
 }
 </style>

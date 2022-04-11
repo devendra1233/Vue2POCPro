@@ -88,12 +88,7 @@
                   </p>
                 </div>
                 <div class="form-group">
-                  <button
-                    type="submit"
-                    class="form-control btn btn-primary submit px-3"
-                  >
-                    Sign In
-                  </button>
+                     <Button color="pink" background="#558bd3">Sign In</Button>
                 </div>
               </form>
             </div>
@@ -104,8 +99,11 @@
   </div>
 </template>
 <script>
+import Button from "@/customComponent/Button";
 export default {
-  emits: ["save-data"],
+    components: {
+    Button
+  },
   data() {
     return {
       name: {
@@ -176,7 +174,7 @@ export default {
       };
       this.$store.dispatch("getBookEnquiry", formData);
       alert("Enquiry register sucessfully");
-      setTimeout(() => this.$router.push({ path: "/" }), 2000);
+      setTimeout(() => this.$router.push({ path: "/home" }), 2000);
     },
   },
   mounted() {},

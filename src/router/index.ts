@@ -1,12 +1,14 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../views/Login.vue'
+import Home from '../views/Home.vue'
 Vue.use(VueRouter);
 
 function guardMyroute(to: any, from: any, next: any) {
   let isAuthenticated = false;
-  if (localStorage.getItem('LoggedUser'))
+  if (localStorage.getItem('LoggedUser')){
     isAuthenticated = true;
+  }
   else
     isAuthenticated = false;
   if (isAuthenticated) {
@@ -27,37 +29,37 @@ const routes = [
   {
     path: '/home',
     name: 'Home',
-    // beforeEnter: guardMyroute,
-    component: () => import('../views/Home.vue')
+    beforeEnter: guardMyroute,
+    component: Home
   },
   {
     path: '/book',
     name: 'Book',
-    // beforeEnter: guardMyroute,
+    beforeEnter: guardMyroute,
     component: () => import('../views/Book.vue')
   },
   {
     path: '/historybook',
     name: 'HistoryBook',
-    // beforeEnter: guardMyroute,
+    beforeEnter: guardMyroute,
     component: () => import('../views/HBook.vue')
   },
   {
     path: '/sciencebook',
     name: 'ScienceBook',
-    // beforeEnter: guardMyroute,
+    beforeEnter: guardMyroute,
     component: () => import('../views/SBook.vue')
   },
   {
     path: '/mythologybook',
     name: 'Mythologybook',
-    // beforeEnter: guardMyroute,
+    beforeEnter: guardMyroute,
     component: () => import('../views/MBook.vue')
   },
   {
     path: '/fusionbook',
     name: 'Fusionbook',
-    // beforeEnter: guardMyroute,
+    beforeEnter: guardMyroute,
     component: () => import('../views/FBook.vue')
   },
   {

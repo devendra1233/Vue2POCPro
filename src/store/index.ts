@@ -52,18 +52,7 @@ export default new Vuex.Store({
         // Handle errors here
       }
     },
-
-    // async getHistoryBook({ commit }) {
-    //   let response = await fetch(`https://vue2poc-default-rtdb.asia-southeast1.firebasedatabase.app/barChart.json`);
-    //   let data = await response.json()
-    //   const historyBooks = data;
-    //   const historyBooksLength = historyBooks.length;
-
-    //   console.log("historyBooksLength", historyBooksLength)
-    //   console.log("historyBooks", historyBooks)
-    //   commit('SET_HBOOK', [historyBooks, historyBooksLength])
-    // },
-
+    
     async getScienceBook({ commit }) {
       try{
         let response = await fetch(`https://vue2poc-default-rtdb.asia-southeast1.firebasedatabase.app/scienceBook.json`);
@@ -77,16 +66,6 @@ export default new Vuex.Store({
         // Handle errors here
       }
     },
-
-    // getScienceBook({ commit }) {
-    //   axios.get('https://vue2poc-default-rtdb.asia-southeast1.firebasedatabase.app/scienceBook.json')
-    //     .then(response => {
-    //       const scienceBooks = response.data;
-    //       const scienceBooksLength = scienceBooks.length;
-    //       console.log("scienceBooksLength", scienceBooksLength)
-    //       commit('SET_SBOOK', [scienceBooks, scienceBooksLength])
-    //     })
-    // },
 
     async getMythologyBook({ commit }) {
       try{
@@ -102,17 +81,6 @@ export default new Vuex.Store({
       }
     },
 
-    // getMythologyBook({ commit }) {
-    //   axios.get('https://vue2poc-default-rtdb.asia-southeast1.firebasedatabase.app/mythologyBook.json')
-    //     .then(response => {
-    //       const mythologyBooks = response.data;
-    //       const mythologyBooksLength = mythologyBooks.length;
-    //       console.log("mythologyBooksLength", mythologyBooksLength)
-    //       commit('SET_MBOOK', [mythologyBooks, mythologyBooksLength])
-    //     })
-    // },
-
-
     async getFusionBook({ commit }) {
       try{
         let response = await fetch(`https://vue2poc-default-rtdb.asia-southeast1.firebasedatabase.app/mythologyBook.json`);
@@ -126,17 +94,6 @@ export default new Vuex.Store({
         // Handle errors here
       }
     },
-
-    // getFusionBook({ commit }) {
-    //   axios.get('https://vue2poc-default-rtdb.asia-southeast1.firebasedatabase.app/fusionBook.json')
-    //     .then(response => {
-    //       const fusionBooks = response.data;
-    //       const fusionBooksLength = fusionBooks.length;
-    //       console.log("fusionBooksLength", fusionBooksLength)
-    //       commit('SET_FBOOK', [fusionBooks, fusionBooksLength])
-    //     })
-    // },
-
 
 
     getLoginUser({ commit }, payload) {
@@ -165,7 +122,6 @@ export default new Vuex.Store({
     },
 
     async getBookEnquiry(context, payload) {
-      // Simple POST request with a JSON body using fetch
       const newRequest = {
         name: payload.name,
         email: payload.email,
@@ -185,26 +141,6 @@ export default new Vuex.Store({
       console.log("fusionBooksLength", fusionBooksLength)
       context.commit('SET_ENUIRY', data);
     }
-
-    // getBookEnquiry(context, payload) {
-    //   const newRequest = {
-    //     name: payload.name,
-    //     email: payload.email,
-    //     mobile: payload.mobile,
-    //     adress: payload.addres,
-    //     query: payload.query,
-    //   };
-    //   try {
-    //     const response = axios.post('https://vue2poc-default-rtdb.asia-southeast1.firebasedatabase.app/enquiry.json', newRequest)
-    //       .then((response) => {
-    //         context.commit('SET_ENUIRY', response.data);
-    //       });
-    //   } catch (error) {
-    //     // this.error = error;
-    //     // context.commit('SET_bookService', this.error);
-    //   }
-    // },
-
 
   },
   modules: {

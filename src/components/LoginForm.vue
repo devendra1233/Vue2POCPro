@@ -12,35 +12,35 @@
             <div class="login-wrap p-0">
               <form @submit.prevent="submitForm" class="signin-form">
                 <div class="form-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    :class="{ invalid: !email.isValid }"
+                  <InputText
+                    id="password-field"
+                    type="password"
+                     color="green" 
+                    :class="{ invalid: !pass.isValid }"
                     placeholder= "Email/Username"
                     v-model="email.val"
                     @blur="clearValidity('email')"
-                  />
-                 <p v-if="!email.isValid" :class="{ invalid: !email.isValid }">Please enter valid email</p>
+                  /> 
+                  <p v-if="!email.isValid" :class="{ invalid: !email.isValid }">
+                    Please enter valid email
+                  </p>
                 </div>
                 <div class="form-group">
-                  <input
+                    <InputText
                     id="password-field"
                     type="password"
-                    class="form-control"
+                    color="green" 
                     :class="{ invalid: !pass.isValid }"
                     placeholder= "password"
                     v-model="pass.val"
                     @blur="clearValidity('pass')"
-                  />
-                 <p v-if="!pass.isValid" :class="{ invalid: !pass.isValid }">Please enter valid password</p>
+                  /> 
+                  <p v-if="!pass.isValid" :class="{ invalid: !pass.isValid }">
+                    Please enter valid password
+                  </p>
                 </div>
                 <div class="form-group">
-                  <button
-                    type="submit"
-                    class="form-control btn btn-primary submit px-3"
-                  >
-                    Sign In
-                  </button>
+                     <Button color="pink" background="#558bd3">Sign In</Button>
                 </div>
               </form>
             </div>
@@ -51,7 +51,13 @@
   </div>
 </template>
 <script>
+import InputText from "@/customComponent/InputText";
+import Button from "@/customComponent/Button";
 export default {
+  components: {
+    InputText,
+    Button
+  },
   data() {
     return {
       email: {
@@ -63,14 +69,14 @@ export default {
         isValid: true,
       },
     };
-   },
+  },
   methods: {
     clearValidity(input) {
       this[input].isValid = true;
     },
     validateForm() {
       this.formIsValid = true;
-       if (this.email.val === "" || !this.email.val.includes("@")) {
+      if (this.email.val === "" || !this.email.val.includes("@")) {
         this.email.isValid = false;
         this.formIsValid = false;
       }
@@ -80,8 +86,8 @@ export default {
       }
     },
     submitForm() {
-      this.validateForm();      
-      if(!this.formIsValid) {
+      this.validateForm();
+      if (!this.formIsValid) {
         return;
       }
       const formData = {
@@ -92,31 +98,29 @@ export default {
       this.$store.dispatch("getLoginUser", formData);
     },
   },
-    computed: {
-  },
-    mounted() {
-
-  },
+  computed: {},
+  mounted() {},
 };
 </script>
 <style  scoped>
 @import "../assets/css/style.css";
-.ftco-section{
+.ftco-section {
   color: black;
 }
-.form-control, .form-control:hover, .form-control:focus {
-    background: #558bd3;
-    outline: none;
-    box-shadow: none;
-    border-color: rgba(255, 255, 255, 0.4);
+.form-control,
+.form-control:hover,
+.form-control:focus {
+  background: #558bd3;
+  outline: none;
+  box-shadow: none;
+  border-color: rgba(255, 255, 255, 0.4);
 }
 .invalid {
   color: red;
   font-weight: bold;
 }
 
-.heading-section{
+.heading-section {
   color: black;
 }
-
 </style>
